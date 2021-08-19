@@ -1,7 +1,7 @@
 import React, { lazy } from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import { NotFound } from './NotFound';
+import { NotFound } from './not-found';
 
 import { LOGIN, HOME, CART } from './router-paths';
 

@@ -1,10 +1,33 @@
 import React from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-const Login = () => {
+const Login = (props) => {
   return (
-    <div>
-      <h1 style={{ color: 'white' }}>Login</h1>
-    </div>
+    <Form inline>
+      <FormGroup>
+        <Label for="exampleEmail" hidden>
+          Email
+        </Label>
+        <Input
+          type="email"
+          name="email"
+          id="exampleEmail"
+          placeholder="Email"
+        />
+      </FormGroup>{' '}
+      <FormGroup>
+        <Label for="examplePassword" hidden>
+          Password
+        </Label>
+        <Input
+          type="password"
+          name="password"
+          id="examplePassword"
+          placeholder="Password"
+        />
+      </FormGroup>{' '}
+      <Button>Submit</Button>
+    </Form>
   );
 };
 

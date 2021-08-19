@@ -1,9 +1,13 @@
 import React, { createContext, useState } from 'react';
 
+const initialState = {
+  token: '',
+};
+
 const AppContext = createContext();
 
 export const AppStateProvider = ({ children }) => {
-  const [user, setUser] = useState({});
+  const [user, setUser] = useState(initialState);
 
   const saveUser = (data) => {
     setUser(data);

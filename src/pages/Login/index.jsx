@@ -1,22 +1,25 @@
 import React,{useState} from 'react';
 import { useAuth } from '../../hooks'
-import { auth } from '../../firebase'
+import { auth } from 'firebase'
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import { useHistory } from 'react-router-dom';
 
 const Login = (props) => {
   const  {saveUser, user} = useAuth()
   const  [email,setEmail] = useState('');
   const  [password,setPassword] = useState('');
- console.log(user)
+  const  history =  useHistory()
   const  handleLogin = (e)=>{
     e.preventDefault();
-    auth.signInWithEmailAndPassword(email, password).then(async(userCredential) => {
+    auth().signInWithEmailAndPassword(email, password).then(async(userCredential) => {
       var user = userCredential.user;
       const  token = await user.getIdTokenResult();
       saveUser({
         token: token.token
       })
     })
+
+    history.push('/home')
   }
 
   return (

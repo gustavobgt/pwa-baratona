@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  Spinner,
+  Container,
   Card,
   Button,
   CardImg,
@@ -36,33 +36,43 @@ const Home = () => {
 
   return (
     <Layout>
-      <CardGroup style={{ gridGap: '10px' }}>
-        {loading ? (
-          <Spinner color="secondary" />
-        ) : (
-          products.map((product) => {
-            return (
-              <Card key={product._id}>
-                <CardImg
-                  top
-                  width="20%"
-                  src={product?.images[0]?.url}
-                  alt="Card image cap"
-                />
-                <CardBody>
-                  <CardTitle tag="h5">{product.title}</CardTitle>
-                  <CardSubtitle tag="h6" className="mb-2 text-muted">
-                    R$ {product.price}
-                  </CardSubtitle>
+      <Container fluid>
+        <CardGroup style={{ gridGap: '20px', marginTop: '20px' }}>
+          {loading ? (
+            <div
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+              }}
+            >
+              <h4 style={{ textAlign: 'center' }}>Carregando...</h4>
+            </div>
+          ) : (
+            products.map((product) => {
+              return (
+                <Card key={product._id}>
+                  <CardImg
+                    top
+                    width="20%"
+                    src={product?.images[0]?.url}
+                    alt="Card image cap"
+                  />
+                  <CardBody>
+                    <CardTitle tag="h5">{product.title}</CardTitle>
+                    <CardSubtitle tag="h6" className="mb-2 text-muted">
+                      R$ {product.price}
+                    </CardSubtitle>
 
-                  <Button>Comprar</Button>
-                </CardBody>
-              </Card>
-            );
-          })
-        )}
-        {error && <span>Error</span>}
-      </CardGroup>
+                    <Button>Comprar</Button>
+                  </CardBody>
+                </Card>
+              );
+            })
+          )}
+          {error && <span>Error</span>}
+        </CardGroup>
+      </Container>
     </Layout>
   );
 };

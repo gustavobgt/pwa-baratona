@@ -1,8 +1,6 @@
 import React, { createContext, useState } from 'react';
 
-const initialState = {
-  token: '',
-};
+const initialState = { token: '' };
 
 const AppContext = createContext();
 

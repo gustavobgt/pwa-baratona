@@ -11,6 +11,7 @@ const firebaseConfig = {
   measurementId: 'G-1VLCVRBER2',
 };
 
+
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();

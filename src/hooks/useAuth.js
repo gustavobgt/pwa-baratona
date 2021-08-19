@@ -1,7 +1,7 @@
 import { useAppState } from '../state/app-state';
 
 export const useAuth = () => {
-  const { user } = useAppState();
+  const { user, saveUser } = useAppState();
 
-  return { user };
+  return { user, saveUser };
 };

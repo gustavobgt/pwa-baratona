@@ -13,10 +13,8 @@ const Cart = lazy(() => import('../pages/Cart'));
 const RouterConfig = () => (
   <Switch>
     <Route exact path={LOGIN} component={Login} />
-
     <UserRoute exact path={HOME} component={Home} />
     <UserRoute exact path={CART} component={Cart} />
-
     <Route path="*">
       <NotFound />
     </Route>

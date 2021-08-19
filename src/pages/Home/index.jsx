@@ -37,7 +37,7 @@ const Home = () => {
   return (
     <Layout>
       <Container fluid>
-        <CardGroup style={{ gridGap: '20px', marginTop: '20px' }}>
+        <CardGroup style={{ gridGap: '20px', margin: '20px 0px' }}>
           {loading ? (
             <div
               style={{
@@ -46,7 +46,9 @@ const Home = () => {
                 justifyContent: 'center',
               }}
             >
-              <h4 style={{ textAlign: 'center' }}>Carregando...</h4>
+              <h4 style={{ textAlign: 'center', color: '#fff' }}>
+                Carregando...
+              </h4>
             </div>
           ) : (
             products.map((product) => {
@@ -64,7 +66,13 @@ const Home = () => {
                       R$ {product.price}
                     </CardSubtitle>
 
-                    <Button>Comprar</Button>
+                    <Button
+                      onClick={() => {
+                        alert('Produto adicionado ao carrinho!');
+                      }}
+                    >
+                      Comprar
+                    </Button>
                   </CardBody>
                 </Card>
               );

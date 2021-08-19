@@ -38,13 +38,22 @@ const Login = () => {
         history.push(HOME);
       })
       .catch((err) => {
+        alert('Email ou senha inválido!');
         console.log('ERROR = ', err);
+        setLoading(false);
       });
   };
 
   return (
     <Container>
-      <Card style={{ marginTop: '120px' }}>
+      <div style={{ color: 'white', textAlign: 'center' }}>
+        <h1 className="display-3">PWA Baratona</h1>
+        <h5 className="lead">Usuário de teste:</h5>
+        <h5 className="lead">login: usuario_teste@hotmail.com</h5>
+        <h5 className="lead">senha: 123456</h5>
+      </div>
+
+      <Card style={{ marginTop: '30px' }}>
         <CardBody>
           <Form inline onSubmit={handleLogin}>
             <FormGroup>

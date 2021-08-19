@@ -1,4 +1,5 @@
 import React, { Suspense, useEffect } from 'react';
+import { Spinner } from 'reactstrap';
 
 import {initializeFirebase} from './firebase'
 import Router from './navigation/router-config';
@@ -9,7 +10,7 @@ const App = () => {
    initializeFirebase()
   },)
   return (
-    <Suspense fallback={<div>Loading...</div>}>
+    <Suspense fallback={<Spinner type="grow" color="secondary" />}>
       <Router />
     </Suspense>
   );

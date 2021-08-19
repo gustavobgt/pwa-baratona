@@ -1,23 +1,32 @@
-import React,{useState} from 'react';
-import { useAuth } from '../../hooks'
-import { auth } from '../../firebase'
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-const Login = (props) => {
-  const  {saveUser, user} = useAuth()
-  const  [email,setEmail] = useState('');
-  const  [password,setPassword] = useState('');
- console.log(user)
-  const  handleLogin = (e)=>{
+import { useAuth } from '../../hooks';
+import { auth } from '../../firebase';
+import { HOME } from '../../navigation/router-paths';
+
+const Login = () => {
+  const { saveUser, user } = useAuth();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  console.log(user);
+
+  const history = useHistory();
+
+  const handleLogin = (e) => {
     e.preventDefault();
-    auth.signInWithEmailAndPassword(email, password).then(async(userCredential) => {
-      var user = userCredential.user;
-      const  token = await user.getIdTokenResult();
-      saveUser({
-        token: token.token
-      })
-    })
-  }
+    auth
+      .signInWithEmailAndPassword(email, password)
+      .then(async (userCredential) => {
+        var user = userCredential.user;
+        const token = await user.getIdTokenResult();
+        saveUser({
+          token: token.token,
+        });
+        history.push(HOME);
+      });
+  };
 
   return (
     <Form inline onSubmit={handleLogin}>
@@ -26,7 +35,7 @@ const Login = (props) => {
           Email
         </Label>
         <Input
-          onChange={e=>setEmail(e.target.value)}
+          onChange={(e) => setEmail(e.target.value)}
           type="email"
           name="email"
           id="exampleEmail"
@@ -38,13 +47,13 @@ const Login = (props) => {
           Password
         </Label>
         <Input
-          onChange={e=>setPassword(e.target.value)}
+          onChange={(e) => setPassword(e.target.value)}
           type="password"
           name="password"
           id="examplePassword"
           placeholder="Password"
         />
-        <Button type="submit">Submit</Button>
+        <Button type="submit">Entrar</Button>
       </FormGroup>
     </Form>
   );

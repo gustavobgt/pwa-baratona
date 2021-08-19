@@ -12,7 +12,7 @@ import {
 } from 'reactstrap';
 
 import { useAuth } from '../../hooks';
-import { auth } from '../../firebase';
+import { auth } from 'firebase';
 import { HOME } from '../../navigation/router-paths';
 
 const Login = () => {
@@ -26,7 +26,7 @@ const Login = () => {
   const handleLogin = (e) => {
     setLoading(true);
     e.preventDefault();
-    auth
+    auth()
       .signInWithEmailAndPassword(email, password)
       .then(async (userCredential) => {
         var user = userCredential.user;
